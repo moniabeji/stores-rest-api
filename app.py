@@ -16,10 +16,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api = Api(app)
 
-# this is will create all tables unless they exist already,
-@app.before_first_request
-def create_tables():
-    db.create_all()
 
 
 
