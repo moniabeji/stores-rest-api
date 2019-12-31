@@ -1,5 +1,6 @@
-from datetime import timedelta
+import os
 
+from datetime import timedelta
 from flask import Flask
 from flask_restful import Api, reqparse
 from flask_jwt import JWT
@@ -12,7 +13,7 @@ app = Flask(__name__)
 # sqlalchemy has its own modification tracker
 # the line bellow turn off the flask SQLAlchemy modification tracker
 # thos only changing the extension behaviours and not the underling SQLAlchemy behaviors
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///data.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api = Api(app)
 
